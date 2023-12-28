@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./myPromise.js"></script>
+  <!-- <script src="./test.js"></script> -->
+</head>
+<body>
+  <script>
+    const p = new MyPromise((res,rej)=>{
+      // res('ok')
+      // rej('err')
+      // throw 'err'
+      setTimeout(()=>{
+        res('ok')
+      },1000)
+    })
+    p.then(val=>{
+      console.log(val,'首次');
+    },reason=>{
+      console.log(reason);
+    })
+    p.then(val=>{
+      console.log(val,'第二次');
+    },reason=>{
+      alert(reason);
+    })
+    console.log(p);
+    // console.log('x',x);
+  </script>
+</body>
+</html>

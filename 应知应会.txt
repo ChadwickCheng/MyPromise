@@ -1,0 +1,36 @@
+/*
+Promise ES6新的异步编程解决方案
+语法上Promise是一个构造函数，用来封装异步操作并且可以获取成功或失败的结果
+
+then方法
+  1. 成功执行val，失败执行err，依赖于promise实例的结果
+  2. then方法整体返回一个新的promise实例,实例状态由回调函数执行结果决定，可以继续调用then方法
+  3. then方法整体返回的值
+    1. then回调函数返回非promise类型属性，状态为成功，返回值为该对象成功值(return xxx).不返回任何值，成功，undefined
+    2. 内部返回promise对象，状态由该对象决定，返回值由该对象决定
+    3. 回调抛出错误，失败，异常值
+  4. 链式调用，只需要前一个回调函数返回一个promise对象即可。因此可以解决回调地狱问题
+
+catch方法 指定promise实例失败的回调
+  1. 语法糖，then方法不返回第一个参数
+*/
+
+/*
+结合async和await让异步代码像同步代码
+
+async函数声明特殊函数
+  1. 返回值为Promise对象
+  2. Promise对象结果由async函数执行的返回值决定
+返回值：
+  1. async返回结果非Promise实例，则成功，值为返回值
+  2. 抛出错误，返回结果Promise对象状态失败，值为失败对象
+  3. 返回Promise实例，返回结果Promise对象状态和值由返回的Promise对象决定
+  4. 没有return，会返回一个状态为fulfilled（已成功）的Promise对象，其解析值为undefined。
+
+await表达式
+  1. await必须写在async函数中
+  2. await右侧表达式一般为Promise对象
+  3. await返回promise成功的值，注意是值，不是promise对象
+  4. await的promise失败，会抛出异常，需要通过try...catch...捕获处理
+  5. await右侧表达式是其他值，将这个值作为await的返回值
+*/
