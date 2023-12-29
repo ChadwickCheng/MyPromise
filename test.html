@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/myPromise.js"></script>
+</head>
+<body>
+  <script>
+    const p = new MyPromise(res=>{
+      res(new MyPromise(res=>{
+        res(new MyPromise(res=>{
+          res([1,2,3])
+        }))
+      }))
+    })
+    console.log('p',p);
+    p.then(val=>{
+      console.log('p val',val);
+    })
+    // const p = new Promise(res=>{
+    //   res(new Promise(res=>{
+    //     res(new Promise(res=>{
+    //       res([1,2,3])
+    //     }))
+    //   }))
+    // })
+    // console.log('p',p);
+    // p.then(val=>{
+    //   console.log('p val',val);
+    // })
+  </script>
+</body>
+</html>

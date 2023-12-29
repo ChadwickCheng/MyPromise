@@ -11,8 +11,17 @@ function MyPromise(executor){
     if(self.PromiseState!=='pendding') return // 状态只能改变一次
     // 改变状态promiseState 设置结果值promiseResult
     // 实例时默认调用者是window，需要修改this指向
-    self.PromiseState = 'fulfilled'
-    self.PromiseResult = data
+    // self.PromiseState = 'fulfilled'
+    // self.PromiseResult = data
+
+    if(data instanceof MyPromise){
+      self.PromiseResult = data.PromiseResult
+      self.PromiseState = 'fulfilled'
+    }else{
+      self.PromiseResult = data
+      self.PromiseState = 'fulfilled'
+    }
+
     setTimeout(()=>{
       // 调用then成功的回调函数
       self.callbacks.forEach(item=>{
